@@ -28,7 +28,7 @@ import (
 	e2elog "k8s.io/kubernetes/test/e2e/framework/log"
 	testutil "k8s.io/kubernetes/test/utils"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	rgclient "github.com/szuecs/routegroup-client"
 	rgv1 "github.com/szuecs/routegroup-client/apis/zalando.org/v1"

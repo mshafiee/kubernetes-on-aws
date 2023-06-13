@@ -30,9 +30,6 @@ write_files:
 {{- end }}
       featureGates:
         SizeMemoryBackedVolumes: {{ .Cluster.ConfigItems.enable_size_memory_backed_volumes }}
-{{- if eq .Cluster.ConfigItems.enable_ephemeral_containers "true" }}
-        EphemeralContainers: true
-{{- end }}
       podPidsLimit: {{ .NodePool.ConfigItems.pod_max_pids }}
       maxPods: {{ nodeCIDRMaxPods (parseInt64 .Cluster.ConfigItems.node_cidr_mask_size) 8 }}
 {{- if ne .Cluster.ConfigItems.serialize_image_pulls "true" }}
@@ -117,7 +114,7 @@ write_files:
           - --allow-privileged=true
           - --service-cluster-ip-range=10.5.0.0/16
           - --secure-port=443
-          - --enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,ExtendedResourceToleration,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,StorageObjectInUseProtection,PodSecurityPolicy,Priority,NodeRestriction{{if eq .Cluster.ConfigItems.event_rate_limit_enable "true"}},EventRateLimit{{end}}
+          - --enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,ExtendedResourceToleration,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,StorageObjectInUseProtection,Priority,NodeRestriction{{if eq .Cluster.ConfigItems.event_rate_limit_enable "true"}},EventRateLimit{{end}}
           {{- if eq .Cluster.ConfigItems.event_rate_limit_enable "true"}}
           # This file specifies the EventRateLimit admission plugin's configuration
           - --admission-control-config-file=/etc/kubernetes/config/admission-config.yaml
@@ -140,7 +137,7 @@ write_files:
           - --oidc-groups-claim=groups
           - "--oidc-groups-prefix=okta:"
 {{- end }}
-          - --feature-gates=HPAScaleToZero={{ .Cluster.ConfigItems.enable_hpa_scale_to_zero }},EphemeralContainers={{ .Cluster.ConfigItems.enable_ephemeral_containers }},HPAContainerMetrics={{ .Cluster.ConfigItems.enable_hpa_container_metrics }},StatefulSetAutoDeletePVC={{ .Cluster.ConfigItems.enable_statefulset_autodelete_pvc }},TopologyAwareHints={{ .Cluster.ConfigItems.enable_topology_aware_hints }},MinDomainsInPodTopologySpread={{ .Cluster.ConfigItems.min_domains_in_pod_topology_spread_enabled }}
+          - --feature-gates=HPAScaleToZero={{ .Cluster.ConfigItems.enable_hpa_scale_to_zero }},HPAContainerMetrics={{ .Cluster.ConfigItems.enable_hpa_container_metrics }},StatefulSetAutoDeletePVC={{ .Cluster.ConfigItems.enable_statefulset_autodelete_pvc }},TopologyAwareHints={{ .Cluster.ConfigItems.enable_topology_aware_hints }},MinDomainsInPodTopologySpread={{ .Cluster.ConfigItems.min_domains_in_pod_topology_spread_enabled }}
           - --service-account-key-file=/etc/kubernetes/ssl/service-account-public-key.pem
           - --service-account-signing-key-file=/etc/kubernetes/ssl/service-account-private-key.pem
           - --service-account-issuer={{ .Cluster.APIServerURL }}
