@@ -1322,7 +1322,6 @@ k8s.io/csi-translation-lib v0.25.15/go.mod h1:a9T3pLbsEv8RWLvKQELlbJjnu5gr0AZVKB
 k8s.io/gengo v0.0.0-20210813121822-485abfe95c7c/go.mod h1:FiNAH4ZV3gBg2Kwh89tzAEV2be7d5xI0vBa/VySYy3E=
 k8s.io/gengo v0.0.0-20211129171323-c02415ce4185/go.mod h1:FiNAH4ZV3gBg2Kwh89tzAEV2be7d5xI0vBa/VySYy3E=
 k8s.io/klog/v2 v2.60.1 h1:VW25q3bZx9uE3vvdL6M8ezOX79vA2Aq1nEWLqNQclHc=
-k8s.io/klog/v2 v2.60.1/go.mod h1:y1WjHnz7Dj687irZUWR/WLkLc5N1YHtjLdmgWjndZn0=
 k8s.io/kube-aggregator v0.25.15 h1:0slNA6z/0B0zkP13htQBPcTkcWHaibLP+wtXFIE2Fyo=
 k8s.io/kube-aggregator v0.25.15/go.mod h1:JK52OSXPhd9yF58qVubJb6I5MWGFAa5ly7ViMT2Sg1A=
 k8s.io/kube-openapi v0.0.0-20220803162953-67bda5d908f1 h1:MQ8BAZPZlWk3S9K4a9NCkIFQtZShWqoha7snGixVgEA=
