@@ -615,6 +615,10 @@ kuberuntu_image_v1_24_focal_amd64: {{ amiID "zalando-ubuntu-focal-20.04-kubernet
 kuberuntu_image_v1_24_focal_arm64: {{ amiID "zalando-ubuntu-focal-20.04-kubernetes-production-v1.24.17-arm64-master-283" "861068367966" }}
 kuberuntu_image_v1_24_jammy_amd64: {{ amiID "zalando-ubuntu-jammy-22.04-kubernetes-production-v1.24.17-amd64-master-293" "861068367966" }}
 kuberuntu_image_v1_24_jammy_arm64: {{ amiID "zalando-ubuntu-jammy-22.04-kubernetes-production-v1.24.17-arm64-master-293" "861068367966" }}
+kuberuntu_image_v1_25_focal_amd64: {{ amiID "zalando-ubuntu-focal-20.04-kubernetes-production-v1.25.16-amd64-master-294" "861068367966" }}
+kuberuntu_image_v1_25_focal_arm64: {{ amiID "zalando-ubuntu-focal-20.04-kubernetes-production-v1.25.16-arm64-master-294" "861068367966" }}
+kuberuntu_image_v1_25_jammy_amd64: {{ amiID "zalando-ubuntu-focal-20.04-kubernetes-production-v1.25.16-amd64-master-294" "861068367966" }}
+kuberuntu_image_v1_25_jammy_arm64: {{ amiID "zalando-ubuntu-focal-20.04-kubernetes-production-v1.25.16-arm64-master-294" "861068367966" }}
 
 # Which distro from the previous config items should be used. Valid options are `focal` and `jammy`. Can be set for each node pool.
 {{if eq .Cluster.Environment "test"}}
@@ -778,10 +782,6 @@ enable_topology_aware_hints: "false"
 enable_hpa_scale_to_zero: "true"
 # Enable FeatureGate HPAContainerMetrics
 enable_hpa_container_metrics: "true"
-
-# Enable FeatureGate EphemeralContainers (Alpha)
-# https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
-enable_ephemeral_containers: "false"
 
 # enable encryption of secrets in etcd
 # this flag can be switched between true and false
