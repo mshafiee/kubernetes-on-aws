@@ -70,6 +70,8 @@ write_files:
           cacheAuthorizedTTL: "5m"
           cacheUnauthorizedTTL: "30s"
       protectKernelDefaults: true
+      shutdownGracePeriod: "120s"
+      shutdownGracePeriodCriticalPods: "80s"
 
   - owner: root:root
     path: /etc/kubernetes/manifests/kube-apiserver.yaml
