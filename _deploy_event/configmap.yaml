@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{{APPLICATION}}}-{{{COMPONENT}}}"
+  labels:
+    application: "{{{APPLICATION}}}"
+    component: "{{{COMPONENT}}}"
+data:
+  empty-event: "deployment"
