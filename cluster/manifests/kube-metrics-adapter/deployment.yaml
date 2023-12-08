@@ -30,7 +30,7 @@ spec:
         image: container-registry.zalando.net/teapot/kube-metrics-adapter:v0.2.1-18-g85f1c3e
         env:
         - name: AWS_REGION
-          value: {{ .Region }}
+          value: "{{ .Cluster.Region }}"
         args:
         - --prometheus-server=http://prometheus.kube-system.svc.cluster.local
         - --skipper-ingress-metrics
@@ -43,11 +43,11 @@ spec:
         - --aws-region=eu-central-1
         - --aws-region=eu-west-1
         - --skipper-backends-annotation=zalando.org/backend-weights
-        {{ if eq .Environment "production" }}
+        {{ if eq .Cluster.Environment "production" }}
         - --zmon-kariosdb-endpoint={{.Cluster.ConfigItems.zmon_kairosdb_url}}
         {{ end }}
         volumeMounts:
-        {{ if eq .Environment "production" }}
+        {{ if eq .Cluster.Environment "production" }}
         - name: credentials
           mountPath: /meta/credentials
           readOnly: true
@@ -60,7 +60,7 @@ spec:
             cpu: 10m
             memory: 4Gi
       volumes:
-      {{ if eq .Environment "production" }}
+      {{ if eq .Cluster.Environment "production" }}
       - name: credentials
         secret:
           secretName: "kube-metrics-adapter"

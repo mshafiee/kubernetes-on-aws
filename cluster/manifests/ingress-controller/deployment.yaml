@@ -60,7 +60,7 @@ spec:
         - name: CUSTOM_FILTERS
           value: "tag:kubernetes.io/cluster/{{ .Cluster.ID }}=owned tag:node.kubernetes.io/role=worker tag:zalando.org/ingress-enabled=true"
         - name: AWS_REGION
-          value: {{ .Region }}
+          value: "{{ .Cluster.Region }}"
         resources:
           limits:
             cpu: 50m
